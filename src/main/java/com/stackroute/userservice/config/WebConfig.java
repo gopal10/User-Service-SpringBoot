@@ -18,4 +18,4 @@
 //        registrationBean.addUrlMappings("/console/*");
 //        return registrationBean;
 //    }
-//}
+//};

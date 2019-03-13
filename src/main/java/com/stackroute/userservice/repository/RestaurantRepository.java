@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface Res_Repository extends CrudRepository<Restaurant, Integer> {
+public interface RestaurantRepository extends CrudRepository<Restaurant, Integer> {
 
 
     @Query(value = "SELECT * FROM restaurant",nativeQuery = true)

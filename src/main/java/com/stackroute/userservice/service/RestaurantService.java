@@ -1,9 +1,9 @@
 package com.stackroute.userservice.service;
 
 import com.stackroute.userservice.domain.Restaurant;
-import com.stackroute.userservice.repository.Res_Repository;
-import com.stackroute.userservice.userexception.UserAlreadyException;
-import com.stackroute.userservice.userexception.UserNotFound;
+import com.stackroute.userservice.repository.RestaurantRepository;
+import com.stackroute.userservice.exception.UserAlreadyException;
+import com.stackroute.userservice.exception.UserNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,22 +12,22 @@ import java.util.Optional;
 
 @Service
 public class RestaurantService {
-    private Res_Repository res_repository;
+    private RestaurantRepository restaurant_repository;
 
     @Autowired
-    public RestaurantService(Res_Repository res_repository) {
-        this.res_repository = res_repository;
+    public RestaurantService(RestaurantRepository restaurant_repository) {
+        this.restaurant_repository = restaurant_repository;
     }
 
     public RestaurantService() {
     }
 
     public Restaurant savedata(Restaurant restaurant) throws UserAlreadyException {
-        if(res_repository.existsById(restaurant.getRes_id()))
+        if(restaurant_repository.existsById(restaurant.getRes_id()))
         {
             throw new UserAlreadyException("User already present");
         }
-        Restaurant restaurant1= (Restaurant) res_repository.save(restaurant);
+        Restaurant restaurant1= (Restaurant) restaurant_repository.save(restaurant);
 
 //        if(restaurant1==null)
 //        {
@@ -39,12 +39,12 @@ public class RestaurantService {
 
     public List<Restaurant> getAllUsers()
     {
-        return (List<Restaurant>) res_repository.findAll();
+        return (List<Restaurant>) restaurant_repository.findAll();
     }
 
     public Optional<Restaurant> getById(int id)
     {
-        Optional<Restaurant> getUser= res_repository.findById(id);
+        Optional<Restaurant> getUser= restaurant_repository.findById(id);
         return getUser;
 
     }
@@ -52,19 +52,19 @@ public class RestaurantService {
 
     public void delete(int id)
     {
-        res_repository.deleteById(id);
+        restaurant_repository.deleteById(id);
     }
 
     public List<Restaurant>getByQuery()
     {
-       return res_repository.findalluser();
+       return restaurant_repository.findalluser();
     }
     public   List<Restaurant> getbyname(String name) throws UserNotFound {
-        if(res_repository.findByName(name).isEmpty())
+        if(restaurant_repository.findByName(name).isEmpty())
         {
             throw  new UserNotFound("User Not Found");
         }
-        List<Restaurant> restaurant1= res_repository.findByName(name);
+        List<Restaurant> restaurant1= restaurant_repository.findByName(name);
         return restaurant1;
     }
 

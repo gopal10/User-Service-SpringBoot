@@ -3,8 +3,8 @@ package com.stackroute.userservice.controller;
 
 import com.stackroute.userservice.domain.Restaurant;
 import com.stackroute.userservice.service.RestaurantService;
-import com.stackroute.userservice.userexception.UserAlreadyException;
-import com.stackroute.userservice.userexception.UserNotFound;
+import com.stackroute.userservice.exception.UserAlreadyException;
+import com.stackroute.userservice.exception.UserNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +16,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/v2")
 @CrossOrigin
-public class ResController  {
+public class RestaurantController {
 
      private RestaurantService restaurantService;
 
      @Autowired
-    public ResController(RestaurantService restaurantService) {
+    public RestaurantController(RestaurantService restaurantService) {
         this.restaurantService = restaurantService;
     }
 

@@ -1,4 +1,4 @@
-package com.stackroute.userservice.userexception;
+package com.stackroute.userservice.exception;
 
 public class UserNotFound extends Exception {
     public UserNotFound() {
